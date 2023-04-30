@@ -16,6 +16,15 @@ class ViewController: UIViewController {
     
     var storyBrain = StoryBrain()
     
+    @IBAction func choiseMade(_ sender: UIButton) {
+        let userAnswer = sender.currentTitle!
+        
+        storyBrain.checkAnswer(userAnswer: userAnswer)
+        
+        updateUi()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,9 +32,9 @@ class ViewController: UIViewController {
     }
 
     func updateUi() {
-        storyLabel.text = storyBrain.story[0].title
-        choice1Button.setTitle(storyBrain.story[0].choice1, for: .normal)
-        choice2Button.setTitle(storyBrain.story[0].choice2, for: .normal)
+        storyLabel.text = storyBrain.getStory().title
+        choice1Button.setTitle(storyBrain.getStory().choice1, for: .normal)
+        choice2Button.setTitle(storyBrain.getStory().choice2, for: .normal)
     }
 
 }
